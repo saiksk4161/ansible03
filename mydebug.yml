@@ -1,0 +1,22 @@
+---
+- hosts: 172.31.82.213
+  become: yes
+  tasks: 
+  - name: i want to execute linux command quickly
+    command: hostname 
+    register: myresult
+  - name: i want to display myresult
+    debug:
+      msg: "{{myresult}}"  
+
+  - name: i want to install git
+    apt:
+      name: git
+      state: present
+    when: myresult.stderr ==""
+
+  - name: i want to install tree
+    apt:
+      name: tree
+      state: present
+    when: myresult.stderr !=""
