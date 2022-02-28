@@ -1,0 +1,6 @@
+---
+- name: create a tomcat service file ansibele nodes
+  template:
+    src: templates/mytomservice.j2
+    dest: /etc/systemd/system/tomcat.service
+    

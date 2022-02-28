@@ -1,0 +1,11 @@
+---
+- name: create a directory
+  file: 
+    path: /opt/tomcat
+    state: directory
+    mode: 0775
+
+- name: extract tom tar file
+  command:
+    cmd: sudo tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1 
+    creates: /opt/tomcat/LICENSE
